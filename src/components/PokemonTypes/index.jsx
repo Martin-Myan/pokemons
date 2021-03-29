@@ -9,6 +9,11 @@ import styles from './PokemonTypes.scss';
 const PokemonTypes = () => {
   const types = useSelector(pokemonSelectors.selectType);
 
+  // console.log(
+  //   types.map((item) => item.name),
+  //   'typestypestypes',
+  // );
+
   const pokemonTypeCount = types.map((item) => (
     <option
       value={item.name}
@@ -19,7 +24,12 @@ const PokemonTypes = () => {
     </option>
   ));
 
-  return <select className={styles.pokemon_types}>{pokemonTypeCount} </select>;
+  return (
+    <select className={styles.pokemon_types}>
+      <option>All Types</option>
+      {pokemonTypeCount}
+    </select>
+  );
 };
 
 export default PokemonTypes;

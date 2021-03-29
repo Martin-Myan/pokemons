@@ -3,6 +3,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { createActionName } from 'utils/index';
 
 export const GET_PER_PAGE = createActionName('pokemon', 'GET_PER_PAGE');
+
 export const GET_POKEMONS = createActionName('pokemon', 'get_pokemons');
 export const GET_POKEMONS_STARTED = createActionName(
   'pokemon',
@@ -11,6 +12,16 @@ export const GET_POKEMONS_STARTED = createActionName(
 export const GET_POKEMONS_ERROR = createActionName(
   'pokemon',
   'get_pokemons_error',
+);
+
+export const FILTER_POKEMON = createActionName('pokemon', 'filter_pokemon');
+export const FILTER_POKEMON_STARTED = createActionName(
+  'pokemon',
+  'filter_pokemon_started',
+);
+export const FILTER_POKEMON_ERROR = createActionName(
+  'pokemon',
+  'filter_pokemon_eror',
 );
 
 export const GET_TYPES = createActionName('pokemon', 'get_types');
@@ -26,6 +37,7 @@ const initialState = {
   perPage: 10,
   pokemonList: [],
   pokemonTypes: [],
+  activePokemonTypes: [],
 };
 
 const pokemonReducer = (state = initialState, { type, payload }) => {
@@ -38,6 +50,8 @@ const pokemonReducer = (state = initialState, { type, payload }) => {
       return { ...state, pokemonTypes: payload };
     case GET_PER_PAGE:
       return { ...state, perPage: payload };
+    case FILTER_POKEMON:
+      return { ...state, activePokemonTypes: payload };
     default: {
       return state;
     }

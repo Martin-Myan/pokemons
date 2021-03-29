@@ -23,11 +23,6 @@ const PokemonInfo = () => {
     !pokemonImagePosition ? router.query.id : `back/${router.query.id}`
   }.png`;
 
-  const leftPosition = '<';
-  const rightPosition = '>';
-
-  console.log(selectPokemons, '{selectPokemons.types.type}');
-
   return (
     <section className={`${styles.pokemonInfo} container`}>
       <Link to="/" className={styles.pokemonInfo__back}>
@@ -59,7 +54,7 @@ const PokemonInfo = () => {
               }
               type="button"
             >
-              {leftPosition}
+              {`${'<'}`}
             </button>
             <button
               onClick={pokemonPosition}
@@ -68,7 +63,7 @@ const PokemonInfo = () => {
               }
               type="button"
             >
-              {rightPosition}
+              {`${'>'}`}
             </button>
           </div>
         </div>

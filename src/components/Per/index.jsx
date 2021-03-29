@@ -18,6 +18,7 @@ const Per = () => {
       <option value="10">Per 10</option>
       <option value="40">Per 40</option>
       <option value="70">Per 70</option>
+      <option value="1017">ALL</option>
     </select>
   );
 };

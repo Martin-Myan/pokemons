@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import shortid from 'shortid';
 
-import { Button, Link } from 'components';
+import { Link } from 'components';
 
 import styles from './PokemonItem.scss';
 
-const PokemonItem = ({ id, types_two, types_one, pokemonTitle }) => {
+import { ReactComponent as EditPosition } from '../../icons/editposition.svg';
+
+const PokemonItem = ({ id, pokemonTitle, data }) => {
   const [pokemonPosition, setPokemonPosition] = useState(false);
-
-  const leftClick = () => {
-    setPokemonPosition(true);
-  };
-
-  const rightClick = () => {
-    setPokemonPosition(false);
-  };
-
   const pokemonPageFromId = `/pokemon/${[id]}`;
+
+  const editPokemonPosition = () => {
+    setPokemonPosition(!pokemonPosition);
+  };
+
+  const pokemonType = data.types.map((item) => (
+    <p key={shortid.generate()}>{item.type.name}</p>
+  ));
 
   return (
     <div className={styles.pokemon_component}>
@@ -38,20 +40,18 @@ const PokemonItem = ({ id, types_two, types_one, pokemonTitle }) => {
         </h2>
       </Link>
       <div className={styles.pokemon_component__btnBlock}>
-        <Button
-          className={styles.pokemon_component__btnBlock__left}
-          onClick={leftClick}
-        >
-          With the back
-        </Button>
-        <Button
-          className={styles.pokemon_component__btnBlock__right}
-          onClick={rightClick}
-        >
-          Face
-        </Button>
-        <p>{types_one}</p>
-        <span>{types_two}</span>
+        <EditPosition
+          type="button"
+          onClick={editPokemonPosition}
+          className={styles.pokemon_component__btnBlock__editPosition}
+        />
+      </div>
+
+      <div className={styles.pokemon_component__typesBlock}>
+        <h3 className={styles.pokemon_component__typesBlock__titels}>Types</h3>
+        <div className={styles.pokemon_component__typesBlock__types}>
+          {pokemonType}
+        </div>
       </div>
     </div>
   );
@@ -60,16 +60,14 @@ const PokemonItem = ({ id, types_two, types_one, pokemonTitle }) => {
 PokemonItem.defaultProps = {
   id: 1,
   src: '',
-  types_two: '',
-  types_one: '',
+  data: {},
   pokemonTitle: '',
 };
 
 PokemonItem.propTypes = {
   id: PropTypes.number,
   src: PropTypes.string,
-  types_two: PropTypes.string,
-  types_one: PropTypes.string,
+  data: PropTypes.object,
   pokemonTitle: PropTypes.string,
 };
 

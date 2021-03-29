@@ -1,2 +1,1 @@
-https://pokedex-next-js-henna.vercel.app
-"# pokemons" 
+#DEMO https://pokedex-next-js-shantissa.vercel.app

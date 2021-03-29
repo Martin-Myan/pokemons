@@ -5,12 +5,12 @@ import { PokemonTypes, Per, Searche } from 'components';
 
 import styles from './Header.scss';
 
-const Header = ({ options }) => {
+const Header = ({ onChange }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <PokemonTypes options={options} />
-        <Searche />
+        <PokemonTypes />
+        <Searche onChange={onChange} />
         <Per />
       </div>
     </header>
@@ -18,11 +18,11 @@ const Header = ({ options }) => {
 };
 
 Header.defaultProps = {
-  options: [],
+  onChange: () => {},
 };
 
 Header.propTypes = {
-  options: PropTypes.any,
+  onChange: PropTypes.func,
 };
 
 export default Header;

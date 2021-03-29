@@ -13,23 +13,21 @@ const HomeContainer = () => {
 
   const renderItems = selectPokemons.map((item) => (
     <PokemonItem
+      data={item}
       id={item.id}
       key={shortid.generate()}
       pokemonTitle={item.name}
       url={item.base_experience}
-      // types_two={item.} types_one={item.}
     />
   ));
 
-  // console.log(
-  //   selectPokemons.map((item) => {
-  //     console.log(item.types, 'renderItemsrenderItemsrenderItemsrenderItems');
-  //   }),
-  // );
+  // const searchName = (e) => {
+  //   ;
+  // };
 
   return (
     <section className={styles.localPage}>
-      <Header />
+      <Header onChange={(e) => e.target.value} />
       <div className={styles.localPage__header_skelleton} />
       <Pagination />
       <div className={styles.localPage__pokemonItems}>{renderItems}</div>

@@ -3,13 +3,19 @@ import axios from 'axios';
 import { axiosInstance } from 'libraries/index';
 
 import {
-  GET_POKEMONS,
-  GET_POKEMONS_STARTED,
-  GET_POKEMONS_ERROR,
   GET_PER_PAGE,
-  GET_TYPES_STARTED,
-  GET_TYPES_ERROR,
+  //
   GET_TYPES,
+  GET_TYPES_ERROR,
+  GET_TYPES_STARTED,
+  //
+  GET_POKEMONS,
+  GET_POKEMONS_ERROR,
+  GET_POKEMONS_STARTED,
+  //
+  FILTER_POKEMON,
+  FILTER_POKEMON_ERROR,
+  FILTER_POKEMON_STARTED,
 } from '../reducers/pokemonReducer';
 
 export const getPokemonStarted = () => ({ type: GET_POKEMONS_STARTED });
@@ -67,4 +73,16 @@ export const getPokemonList = (perPage) => async (dispatch) => {
 export const perPageHandlerAction = (per) => ({
   type: GET_PER_PAGE,
   payload: per,
+});
+
+export const filterPokemonError = (err) => ({
+  type: FILTER_POKEMON_ERROR,
+  payload: err,
+});
+export const filterPokemonStarted = () => ({
+  type: FILTER_POKEMON_STARTED,
+});
+export const filterPokemon = () => ({
+  type: FILTER_POKEMON,
+  // payload: err,
 });
