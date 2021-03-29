@@ -1,0 +1,35 @@
+.header {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80px;
+  z-index: 100;
+  display: flex;
+  position: fixed;
+  padding: 5px 8px;
+  align-items: center;
+  background-image: radial-gradient(
+    circle,
+    #12e700,
+    #45e500,
+    #5ee200,
+    #71e000,
+    #81dd00,
+    #79e134,
+    #71e44e,
+    #6be764,
+    #4fee90,
+    #3af4b7,
+    #40f8d8,
+    #5ffbf1
+  );
+
+  &__container {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+    justify-content: space-between;
+  }
+}

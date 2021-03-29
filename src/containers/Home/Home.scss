@@ -1,0 +1,31 @@
+.localPage {
+  background-image: linear-gradient(
+    to bottom,
+    #2b5a9f,
+    #00659b,
+    #006a87,
+    #006d6b,
+    #006c4d,
+    #07774e,
+    #16814d,
+    #258c4b,
+    #29a873,
+    #33c39d,
+    #45dfc7,
+    #5ffbf1
+  );
+
+  &__header_skelleton {
+    height: 80px;
+  }
+
+  &__pokemonItems {
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 0;
+    position: relative;
+    justify-content: space-between;
+    justify-content: center;
+  }
+}

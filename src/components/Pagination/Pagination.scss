@@ -1,0 +1,23 @@
+.pagination {
+  height: 25px;
+  height: 50px;
+  display: flex;
+  padding: 0 5px;
+  max-width: 500px;
+  margin: 50px auto;
+  align-items: center;
+  border-radius: 25px;
+  background-color: red;
+  justify-content: space-between;
+
+  &__leftIcon {
+    height: 20px;
+    max-width: 20px;
+    transform: rotate(180deg);
+  }
+
+  &__rightIcon {
+    height: 20px;
+    max-width: 20px;
+  }
+}

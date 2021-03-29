@@ -1,0 +1,15 @@
+.pokemon_types {
+  width: 150px;
+  border-radius: 5px;
+  border: 2px solid tomato;
+  background-color: transparent;
+
+  &__options {
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    background-color: rgba(46, 138, 138, 0.5);
+  }
+}
