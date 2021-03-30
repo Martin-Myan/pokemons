@@ -27,7 +27,7 @@ const PokemonItem = ({ id, pokemonTitle, data }) => {
         className={styles.pokemon_component__imageBlock}
       >
         <img
-          alt="Pokemon-_-Title"
+          alt="Pokemon_image_undefned"
           className={styles.pokemon_component__imageBlock__image}
           src={
             pokemonPosition

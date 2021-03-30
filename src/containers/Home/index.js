@@ -1,17 +1,27 @@
-import React from 'react';
-import shortid from 'shortid';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { pokemonSelectors } from 'store/selectors';
+// import Select from 'react-select';
+
+import shortid from 'shortid';
+
 import { Header, PokemonItem, Pagination } from 'components';
+import { pokemonSelectors } from 'store/selectors';
 
 import styles from './Home.scss';
 
 const HomeContainer = () => {
+  const [change, setChange] = useState('');
   const selectPokemons = useSelector(pokemonSelectors.selectPokemonList);
 
-  const renderItems = selectPokemons.map((item) => (
+  const filterItems = selectPokemons.filter((item) => {
+    return item.name.toLowerCase().includes(change.toLowerCase());
+  });
+
+  const isSearch = change ? filterItems : selectPokemons;
+
+  const renderItems = isSearch.map((item) => (
     <PokemonItem
       data={item}
       id={item.id}
@@ -21,13 +31,33 @@ const HomeContainer = () => {
     />
   ));
 
-  // const searchName = (e) => {
-  //   ;
-  // };
+  const types = useSelector(pokemonSelectors.selectType);
+
+  // const filterItemsFromType = selectPokemons.filter((item) => {
+  //   return item.name.toLowerCase().includes(change.toLowerCase());
+  // });
+
+  const pokemonTypeCount = types.map((item) => (
+    <option
+      value={item.name}
+      key={shortid.generate()}
+      className={styles.pokemon_types__options}
+    >
+      {item.name}
+    </option>
+  ));
+
+  console.log(pokemonTypeCount, 'pokemonTypeCountpokemonTypeCount');
 
   return (
     <section className={styles.localPage}>
-      <Header onChange={(e) => e.target.value} />
+      <Header
+        value={change}
+        onChange={(e) => {
+          setChange(e.target.value.trim());
+        }}
+        pokemonTypeCount={pokemonTypeCount}
+      />
       <div className={styles.localPage__header_skelleton} />
       <Pagination />
       <div className={styles.localPage__pokemonItems}>{renderItems}</div>
